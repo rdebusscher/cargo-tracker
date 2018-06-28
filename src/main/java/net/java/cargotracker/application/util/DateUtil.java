@@ -2,16 +2,22 @@ package net.java.cargotracker.application.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
 /**
- * A few utils for working with Date.
+ * A few utilities for working with dates.
  */
 // TODO Make this a CDI singleton?
 public class DateUtil {
 
     private DateUtil() {
+    }
+
+    public static Date toDate(LocalDate localDate) {
+        return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 
     public static Date toDate(String date) {

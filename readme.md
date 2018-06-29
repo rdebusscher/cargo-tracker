@@ -40,9 +40,7 @@ The tracking interface let's you track the status of cargo and is intended for t
 
 The administrative interface is intended for the shipping company that manages cargo. The landing page of the interface is a dashboard providing an overall view of registered cargo. You can book cargo using the booking interface. One cargo is booked, you can route it. When you initiate a routing request, the system will determine routes that might work for the cargo. Once you select a route, the cargo will be ready to process handling events at the port. You can also change the destination for cargo if needed or track cargo.
 
-The Incident Logging interface is intended for port personnel registering what 
-happened to cargo. The interface is primarily intended for mobile devices, but
-you can use it via a desktop browser. The interface is accessible at:
+The event logging interface is intended for port personnel registering what happened to cargo. The interface is primarily intended for mobile devices, but you can use it via a desktop browser. The interface is accessible at:
 http://localhost:8080/cargo-tracker/incident-logger/. For convenience, you
 could use a mobile emulator instead of an actual mobile device. On Windows,
 you can use Microsoft WebMatrix for device emulation. Generally speaking cargo

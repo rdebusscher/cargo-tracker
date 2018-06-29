@@ -1,10 +1,8 @@
-Cargo Tracker
-=============                              
-Applied Domain-Driven Design Blue Prints for Java EE
-----------------------------------------------------
+Cargo Tracker - Applied Domain-Driven Design Blue Prints for Java EE
+====================================================================
 
 Overview
-========
+--------
 The project demonstrates how you can develop applications with the Java EE 
 platform using widely adopted architectural best practices like Domain-Driven 
 Design (DDD), TDD and agile. The project is directly based on the well known 
@@ -22,7 +20,7 @@ For further details on the project, please visit:
 https://github.com/javaee/cargotracker
 
 Getting Started
-===============
+---------------
 The project site has detailed information on how to get started: 
 https://java.net/projects/cargotracker/pages/Home, especially with NetBeans:
 https://java.net/projects/cargotracker/pages/NetBeans.
@@ -52,7 +50,7 @@ issues due to reported GlassFish 4 bugs - please read the Known Issues section
 below.
 
 Exploring the Application
-=========================
+-------------------------
 After the application runs, it will be available at: 
 http://localhost:8080/cargo-tracker/. Under the hood, the application uses a 
 number of Java EE (and Java EE 7) features including JSF 2.2, CDI, EJB 3.2, 
@@ -118,7 +116,7 @@ REST interfaces as well as the numerous unit tests covering the code base
 generally.
 
 Exploring the Code
-==================
+------------------
 As mentioned earlier, the real point of the application is demonstrating how to 
 create well architected, effective Java EE applications. To that end, once you 
 have gotten some familiarity with the application functionality the next thing 
@@ -149,7 +147,7 @@ we do use a very representative set. You'll find that you'll learn a fair amount
 by simply digging into the code to see how things are implemented.
 
 Known Issues
-============
+------------
 There are no known issues while running on GlassFish 4.1. For previous versions
 you might run into the following issues:
 
@@ -167,7 +165,7 @@ you might run into the following issues:
   system and restarting the application.
 
 Getting Involved
-================
+----------------
 Cargo Tracker is an open source project hosted on java.net. We would welcome any 
 and all contributions.
 
@@ -176,4 +174,3 @@ The JIRA issue tracker is here: http://java.net/jira/browse/CARGOTRACKER
 
 You can also send an email to reza.rahman@oracle.com with any questions, 
 concerns or suggestions.
-

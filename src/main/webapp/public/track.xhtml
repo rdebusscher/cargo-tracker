@@ -6,7 +6,7 @@
     <ui:composition template="/WEB-INF/templates/common/public.xhtml">
         <ui:define name="title">Track Cargo</ui:define>
         <ui:define name="content">
-            <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+            <script src="http://maps.google.com/maps/api/js?key=AIzaSyDknJJ9CItZp7MLtsVJXXKP0MrmsZhALu8" type="text/javascript"></script>
             <div class="ui-grid ui-grid-responsive">
                 <div class="ui-grid-row">
                     <div class="ui-grid-col-2" id="leftCol"></div>
@@ -47,7 +47,10 @@
                     <div class="ui-grid-col-8" id="mainCol2">
                         <br/>
                         <h:panelGroup rendered="#{not empty track.cargo}">
-                            <p:gmap center="#{track.cargo.destinationCoordinates}" fitBounds="true" zoom="2" model="#{track.cargo.mapModel}" type="PLAN"  style="width:620px;height:360px;">
+                            <p:gmap center="#{track.cargo.destinationCoordinates}" 
+                                    fitBounds="true" zoom="2" 
+                                    model="#{track.cargo.mapModel}" 
+                                    type="PLAN" style="width:620px;height:360px;">
                             </p:gmap>
                         </h:panelGroup>
                         <p:separator />

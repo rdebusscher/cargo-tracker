@@ -59,42 +59,20 @@ You can also use the soapUI scripts included in the source code to explore the R
 
 Exploring the Code
 ------------------
-As mentioned earlier, the real point of the application is demonstrating how to 
-create well architected, effective Java EE applications. To that end, once you 
-have gotten some familiarity with the application functionality the next thing 
-to do is to dig right into the code.
+As mentioned earlier, the real point of the application is demonstrating how to create well architected, effective Java EE applications. To that end, once you have gotten some familiarity with the application functionality the next thing to do is to dig right into the code.
 
-DDD is a key aspect of the architecture, so it's important to get at least a 
-working understanding of DDD. As the name implies, Domain-Driven Design is an 
-approach to software design and development that focuses on the core domain and 
-domain logic.
+DDD is a key aspect of the architecture, so it's important to get at least a working understanding of DDD. As the name implies, Domain-Driven Design is an approach to software design and development that focuses on the core domain and domain logic.
 
-We have a brief overview of DDD specifically as it relates to Java EE on the 
-project site: https://java.net/projects/cargotracker/pages/Home. There's also a 
-resources page that you should take a look at: 
-https://java.net/projects/cargotracker/pages/Resources. The project site has 
-pages dedicated to explaining the core constructs of DDD and how they are 
-implemented in the application using Java EE: 
-https://java.net/projects/cargotracker/pages/Characterization as well as the DDD
-layers in the application: https://java.net/projects/cargotracker/pages/Layers.
+We have a brief overview of DDD specifically as it relates to Java EE on the project site: https://java.net/projects/cargotracker/pages/Home. There's also a resources page that you should take a look at: https://java.net/projects/cargotracker/pages/Resources. The project site has pages dedicated to explaining the core constructs of DDD and how they are implemented in the application using Java EE: https://java.net/projects/cargotracker/pages/Characterization as well as the DDD layers in the application: https://java.net/projects/cargotracker/pages/Layers.
 
-For the most part, it's fine if you are new to Java EE. As long as you have a
-basic understanding of server-side applications, the resources referenced above
-and the code should be good enough to get started. For learning Java EE further,
-we have recommended a few links in the resources section of the project site. Of 
-course, the ideal user of the project is someone who has a basic working 
-understanding both Java EE and DDD. Though it's not our goal to become a kitchen 
-sink example for demonstrating the vast amount of APIs and features in Java EE,
-we do use a very representative set. You'll find that you'll learn a fair amount
-by simply digging into the code to see how things are implemented.
+For the most part, it's fine if you are new to Java EE. As long as you have a basic understanding of server-side applications, the resources referenced above and the code should be good enough to get started. For learning Java EE further, we have recommended a few links in the resources section of the project site. Of course, the ideal user of the project is someone who has a basic working 
+understanding both Java EE and DDD. Though it's not our goal to become a kitchen sink example for demonstrating the vast amount of APIs and features in Java EE, we do use a very representative set. You'll find that you'll learn a fair amount by simply digging into the code to see how things are implemented.
 
 Getting Involved
 ----------------
-Cargo Tracker is an open source project hosted on java.net. We would welcome any 
-and all contributions.
+Cargo Tracker is an open source project hosted on GitHub. We would welcome any and all contributions.
 
 The project mailing lists are here: https://java.net/projects/cargotracker/lists
-The JIRA issue tracker is here: http://java.net/jira/browse/CARGOTRACKER
+The issue tracker is here: http://java.net/jira/browse/CARGOTRACKER
 
-You can also send an email to reza.rahman@oracle.com with any questions, 
-concerns or suggestions.
+You can also send an email to reza_rahman@lycos.com with any questions, concerns or suggestions.

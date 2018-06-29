@@ -72,7 +72,7 @@ Getting Involved
 ----------------
 Cargo Tracker is an open source project hosted on GitHub. We would welcome any and all contributions.
 
-The project mailing lists are here: https://java.net/projects/cargotracker/lists
-The issue tracker is here: https://github.com/m-reza-rahman/cargo-tracker/issues
+* The project mailing lists are here: https://java.net/projects/cargotracker/lists
+* The issue tracker is here: https://github.com/m-reza-rahman/cargo-tracker/issues
 
 You can also send an email to reza_rahman at lycos dot com with any questions, concerns or suggestions.

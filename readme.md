@@ -18,8 +18,10 @@ The simplest steps are the following (no IDE required):
 
 * Get the project source code (here is a link to the [zip file](https://github.com/m-reza-rahman/cargotracker/archive/master.zip)).
 * As long as you have Maven set up, navigate to the project source root and 
-  type: 
+  type:
+  
 ```mvn package cargo:run```
+
 * Go to http://localhost:8080/cargo-tracker
 
 To set up in NetBeans, follow these steps:

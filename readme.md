@@ -31,23 +31,14 @@ It's best to use Chrome for the application since it has the best support for HT
 
 Exploring the Application
 -------------------------
-After the application runs, it will be available at: 
-http://localhost:8080/cargo-tracker/. Under the hood, the application uses a 
-number of Java EE (and Java EE 7) features including JSF 2.2, CDI, EJB 3.2, 
-JPA 2.1, JAX-RS 2, WebSocket, JSON-P, Bean Validation 1.1 and JMS 2.
+After the application runs, it will be available at: http://localhost:8080/cargo-tracker/. Under the hood, the application uses a 
+number of Java EE (and Java EE 7) features including JSF 2.2, CDI, EJB 3.2, JPA 2.1, JAX-RS 2, WebSocket, JSON-P, Bean Validation 1.1 and JMS 2.
 
-There are several web interfaces, REST interfaces and a file system scanning
-interface. It's probably best to start exploring the interfaces in the rough
-order below.
+There are several web interfaces, REST interfaces and a file system scanning interface. It's probably best to start exploring the interfaces in the rough order below.
 
-The tracking interface let's you track the status of cargo and is
-intended for the general public. Try entering a tracking ID like ABC123 (the 
-application is pre-populated with some sample data).
+The tracking interface let's you track the status of cargo and is intended for the general public. Try entering a tracking ID like ABC123 (the application is pre-populated with some sample data).
 
-The administrative interface is intended for the shipping company that manages
-cargo. The landing page of the interface is a dashboard providing an overall 
-view of registered cargo. The dashboard will update automatically when cargo
-is handled (described below). You can book cargo using the booking interface.
+The administrative interface is intended for the shipping company that manages cargo. The landing page of the interface is a dashboard providing an overall view of registered cargo. The dashboard will update automatically when cargo is handled (described below). You can book cargo using the booking interface.
 One cargo is booked, you can route it. When you initiate a routing request,
 the system will determine routes that might work for the cargo. Once you select
 a route, the cargo will be ready to process handling events at the port. You can

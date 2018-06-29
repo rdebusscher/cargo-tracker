@@ -49,7 +49,7 @@ The event logging interface is intended for port personnel registering what happ
 
 While filling out the event registration form, it's best to have the itinerary handy. You can access the itinerary for registered cargo via the admin interface. The cargo handling is done via JMS for scalability and the event notification to the system happens via the CDI event bus and WebSocket, so you will see a visible delay of a few milliseconds after registering the event for the dashboard and live map to update. While using the event logger, note that only the load and unload events require as associated voyage.
 
-You should also explore the file system based bulk event registration interface. It reads files under /tmp/uploads. The files are just CSV files. A sample CSV file is available under src/main/resources/handling_events.csv. You will need to update the sample to match a registered cargo with a commited itinerary (should be fairly easy to do if you pick cargo ABC123).
+You should also explore the file system based bulk event registration interface. It reads files under /tmp/uploads. The files are just CSV files. A sample CSV file is available under [/src/main/resources/handling_events.csv]. You will need to update the sample to match a registered cargo with a commited itinerary (should be fairly easy to do if you pick cargo ABC123).
 Sucessfully 
 processed entries are archived under /tmp/archive. Any failed records are 
 archived under /tmp/failed. Just like the mobile interface, processing events

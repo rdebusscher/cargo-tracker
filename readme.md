@@ -1,4 +1,4 @@
-# Cargo Tracker - Applied Domain-Driven Design Blue Prints for Java EE
+# Cargo Tracker - Domain-Driven Design Blueprints for Java EE
 
 Overview
 --------

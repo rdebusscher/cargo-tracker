@@ -3,15 +3,8 @@ Cargo Tracker - Domain-Driven Design Blueprints for Java EE
 
 Overview
 --------
-The project demonstrates how you can develop applications with the Java EE 
-platform using widely adopted architectural best practices like Domain-Driven 
-Design (DDD), TDD and agile. The project is directly based on the well known 
-original Java DDD sample (http://dddsample.sourceforge.net) application 
-developed by DDD pioneer Eric Evans' company Domain Language and the Swedish 
-software consulting company Citerus. The cargo example actually comes from 
-Eric Evans' seminal book on DDD. The original application is written in Spring,
-Hibernate and Jetty whereas the application is build entirely on Java EE 7 and
-GlassFish 4.  It also supports WildFly 8.
+The project demonstrates how you can develop applications with the Java EE platform using widely adopted architectural best practices like Domain-Driven Design (DDD). The project is directly based on the well known original [Java DDD sample](http://dddsample.sourceforge.net) application developed by DDD pioneer Eric Evans' company Domain Language and the Swedish 
+software consulting company Citerus. The cargo example actually comes from Eric Evans' seminal book on DDD. The original application is written in Spring, Hibernate and Jetty whereas this application is build entirely on Java EE 8.
 
 The application is an end-to-end system for keeping track of shipping cargo. It 
 has several interfaces described in the following sections.

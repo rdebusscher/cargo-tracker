@@ -38,33 +38,19 @@ There are several web interfaces, REST interfaces and a file system scanning int
 
 The tracking interface let's you track the status of cargo and is intended for the general public. Try entering a tracking ID like ABC123 (the application is pre-populated with some sample data).
 
-The administrative interface is intended for the shipping company that manages cargo. The landing page of the interface is a dashboard providing an overall view of registered cargo. You can book cargo using the booking interface. One cargo is booked, you can route it. When you initiate a routing request, the system will determine routes that might work for the cargo. Once you select a route, the cargo will be ready to process handling events at the port. You can also change the destination for cargo if needed or track cargo.
+The administrative interface is intended for the shipping company that manages cargo. The landing page of the interface is a dashboard providing an overall view of registered cargo. You can book cargo using the booking interface. One cargo is booked, you can route it. When you initiate a routing request, the system will determine routes that might work for the cargo. Once you select a route, the cargo will be ready to process handling events at the port. You can also change the destination for cargo if needed or track cargo. The administrative interface also includes a live map that updates itself as cargo data is updated.
 
-The event logging interface is intended for port personnel registering what happened to cargo. The interface is primarily intended for mobile devices, but you can use it via a desktop browser. The interface is accessible at:
-http://localhost:8080/cargo-tracker/incident-logger/. For convenience, you
-could use a mobile emulator instead of an actual mobile device. On Windows,
-you can use Microsoft WebMatrix for device emulation. Generally speaking cargo
-goes though these events:
+The event logging interface is intended for port personnel registering what happened to cargo. The interface is primarily intended for mobile devices, but you can use it via a desktop browser. The interface is accessible at: http://localhost:8080/cargo-tracker/mobile.xhtml. For convenience, you could use a mobile emulator instead of an actual mobile device. On Windows, you can use Microsoft WebMatrix for device emulation. Generally speaking cargo goes though these events:
 
 * It's received at the origin port.
 * It's loaded and unloaded onto voyages on it's itinerary.
 * It's claimed at it's destination port.
 * It may go through customs at arbitrary points.
 
-While filling out the event registration form, it's best to have the itinerary 
-handy. You can access the itinerary for registered cargo via the admin interface.
-As you register handling events, the administrative dashboard will be 
-automatically updated in real time without a page refresh in addition to cargo 
-state. The cargo handling is done via JMS for scalability and the event 
-notification to the system happens via the CDI event bus and WebSocket, so you 
-will see a visible delay of a few seconds after registering the event for the
-dashboard to update. While using the incident logger, note that only the load 
-and unload events require as associated voyage (entering an unnecessary voyage 
-for other events will result in an  error).
+While filling out the event registration form, it's best to have the itinerary handy. You can access the itinerary for registered cargo via the admin interface. The cargo handling is done via JMS for scalability and the event notification to the system happens via the CDI event bus and WebSocket, so you will see a visible delay of a few milliseconds after registering the event for the dashboard and live map to update. While using the event logger, note that only the load and unload events require as associated voyage.
 
-You should also explore the file system based bulk event registration interface. 
-It reads files under /tmp/uploads. The files are just CSV files. A sample CSV
-file is available under src/main/resources/handling_events.csv. Sucessfully 
+You should also explore the file system based bulk event registration interface. It reads files under /tmp/uploads. The files are just CSV files. A sample CSV file is available under src/main/resources/handling_events.csv. You will need to update the sample to match a registered cargo with a commited itinerary (should be fairly easy to do if you pick cargo ABC123).
+Sucessfully 
 processed entries are archived under /tmp/archive. Any failed records are 
 archived under /tmp/failed. Just like the mobile interface, processing events
 in bulk will also cause the dashboard to automatically update.

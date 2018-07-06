@@ -63,16 +63,16 @@ As mentioned earlier, the real point of the application is demonstrating how to 
 
 DDD is a key aspect of the architecture, so it's important to get at least a working understanding of DDD. As the name implies, Domain-Driven Design is an approach to software design and development that focuses on the core domain and domain logic.
 
-We have a brief overview of DDD specifically as it relates to Java EE on the project site: https://m-reza-rahman.github.io/cargo-tracker/#eeddd. There's also a resources section in the documentation that you should take a look at: https://java.net/projects/cargotracker/pages/Resources. The documentation has sections dedicated to explaining the core constructs of DDD and how they are implemented in the application using Java EE: https://java.net/projects/cargotracker/pages/Characterization as well as the DDD layers in the application: https://java.net/projects/cargotracker/pages/Layers.
+We have [a brief overview of DDD](https://m-reza-rahman.github.io/cargo-tracker/#eeddd) specifically as it relates to Java EE on the project site. There's also a [resources section](https://java.net/projects/cargotracker/pages/Resources) in the documentation that you should take a look at. The documentation has sections dedicated to explaining [the core constructs of DDD](https://java.net/projects/cargotracker/pages/Characterization) and how they are implemented in the application using Java EE as well as the [DDD layers](https://java.net/projects/cargotracker/pages/Layers) in the application.
 
-For the most part, it's fine if you are new to Java EE. As long as you have a basic understanding of server-side applications, the resources referenced above and the code should be good enough to get started. For learning Java EE further, we have recommended a few links in the resources section of the project site. Of course, the ideal user of the project is someone who has a basic working 
+For the most part, it's fine if you are new to Java EE. As long as you have a basic understanding of server-side applications, the resources referenced above and the code should be good enough to get started. For learning Java EE further, we have recommended a few links in the resources section of the documentation. Of course, the ideal user of the project is someone who has a basic working 
 understanding both Java EE and DDD. Though it's not our goal to become a kitchen sink example for demonstrating the vast amount of APIs and features in Java EE, we do use a very representative set. You'll find that you'll learn a fair amount by simply digging into the code to see how things are implemented.
 
 Getting Involved
 ----------------
 Cargo Tracker is an open source project hosted on GitHub. We would welcome any and all contributions.
 
-* The project mailing lists are here: mailto:reza_rahman@lycos.com
+* The project mailing lists are here: reza_rahman@lycos.com
 * The issue tracker is here: https://github.com/m-reza-rahman/cargo-tracker/issues
 
 You can also send an email to reza_rahman at lycos dot com with any questions, concerns or suggestions.

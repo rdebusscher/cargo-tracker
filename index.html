@@ -225,11 +225,25 @@
                         <hr class="section-heading-spacer">
                     </div>
                     <div class="col-lg-9 col-lg-offset-1 col-sm-6">
-                        <p class="lead">Many of you might have at least heard of the J2EE Blue Prints/PetStore. In many ways, the J2EE Blue Prints/PetStore was far ahead of it's time. It helped establish some degree of order out of the chaos of mid-nineties enterprise development. It brought to the mainstream many architectural patterns like separation of concerns, layering, MVC, DAO, DTO and the like that we now mostly take for granted. It also helped catapult J2EE itself. The PetStore of course was not without its own fair share of problems. The most significant of these problems is the fact that many patterns in the PetStore were either motivated or encumbered by the problems of the then relatively new J2EE and EJB 2 technologies and EJB 2 entity beans did not support OO well.</p>
+                        <p class="lead">Many of you might have at least heard of the J2EE Blue Prints/PetStore. In many ways, the J2EE 
+			    Blue Prints/PetStore was far ahead of it's time. It helped establish some degree of order out of the chaos 
+			    of mid-nineties enterprise development. It brought to the mainstream many architectural patterns like 
+			    separation of concerns, layering, MVC, DAO, DTO and the like that we now mostly take for granted. It also 
+			    helped catapult J2EE itself. The PetStore of course was not without its own fair share of problems. The 
+			    most significant of these problems is the fact that many patterns in the PetStore were either motivated or 
+			    encumbered by the problems of the then relatively new J2EE and EJB 2 technologies and EJB 2 entity beans 
+		            did not support OO well.</p>
 
                         <center><img src="img/cargotracker-influences.png"/></center>
 
-                        <p class="lead">DDD provided concrete solutions to the weaknesses in the PetStore with the help of emergent concepts of POJO programming, ORM and lightweight frameworks. It is no accident that DDD is now widely adopted by the Spring and .NET communities. As Java EE has now fully embraced concepts like POJO programming, lightweight programming models, annotations, ORM, rich domain models, agility and testability, this project brings things full circle. It demonstrates first hand how you can utilize the best of the breed in enterprise software development practices using the power and simplicity of the standard, vendor-neutral Java EE platform. Notably unlike the J2EE Blue Prints/PetStore, we will not invent new patterns here but simply adopt the proven, mature ideas in the DDD community.</p>
+                        <p class="lead">DDD provided concrete solutions to the weaknesses in the PetStore with the help of emergent 
+			    concepts of POJO programming, ORM and lightweight frameworks. It is no accident that DDD is now widely 
+			    adopted by the Spring and .NET communities. As Java EE has now fully embraced concepts like POJO 
+			    programming, lightweight programming models, annotations, ORM, rich domain models, agility and testability, 
+			    this project brings things full circle. It demonstrates first hand how you can utilize the best of the 
+			    breed in enterprise software development practices using the power and simplicity of the standard, 
+			    vendor-neutral Java EE platform. Notably unlike the J2EE Blue Prints/PetStore, we will not invent new 
+			    patterns here but simply adopt the proven, mature ideas in the DDD community.</p>
                     </div>
                 </div>
             </div>
@@ -242,7 +256,6 @@
 				<span class="anchor" id="eeddd"></span>
 				<div class="section"></div>
 
-
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2 col-sm-6">
@@ -251,19 +264,60 @@
                         <hr class="section-heading-spacer">
                     </div>
                     <div class="col-lg-9 col-lg-offset-1 col-sm-6">
-                        <p class="lead">As the name implies, Domain-Driven Design is an approach to software design and development that focuses on the core domain and domain logic. The domain is implemented through a careful focus on traditional OOAD (Object Oriented Analysis and Design) and modeling the real world problem the software is trying to solve as closely as possible.</p>
+                        <p class="lead">As the name implies, Domain-Driven Design is an approach to software design and development 
+			    that focuses on the core domain and domain logic. The domain is implemented through a careful focus on 
+			    traditional OOAD (Object Oriented Analysis and Design) and modeling the real world problem the software is 
+			    trying to solve as closely as possible.</p>
 
-                        <p class="lead"><a target="_blank" href="http://en.wikipedia.org/wiki/Domain-driven_design">Wikipedia</a> does a surprisingly good job at overviewing DDD. Aslam Khan's <a target="_blank" href="http://refcardz.dzone.com/refcardz/getting-started-domain-driven">DDD Ref Card</a> on DZone is a brief read and does a great job of explaining the core concepts of DDD. For a bit more detail, you could read the <a target="_blank" href="http://www.infoq.com/minibooks/domain-driven-design-quickly">free DDD eBook</a> on InfoQ. Finally, you can of course read <a target="_blank" href="http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215">Eric Evans' book</a> itself. However, we recommend not starting with the book until you get a bit of your bearings around this application first.</p>
+                        <p class="lead"><a target="_blank" href="http://en.wikipedia.org/wiki/Domain-driven_design">Wikipedia</a> does 
+			    a surprisingly good job at overviewing DDD. Aslam Khan's 
+			    <a target="_blank" href="http://refcardz.dzone.com/refcardz/getting-started-domain-driven">DDD Ref Card</a> 
+			    on DZone is a brief read and does a great job of explaining the core concepts of DDD. For a bit more 
+			    detail, you could read the 
+			    <a target="_blank" href="http://www.infoq.com/minibooks/domain-driven-design-quickly">free DDD eBook</a> on 
+			    InfoQ. Finally, you can of course read 
+			    <a target="_blank" href="http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215">Eric Evans' book</a> 
+			    itself. However, we recommend not starting with the book until you get a bit of your bearings around this 
+			    application first.</p>
 
-                        <p class="lead">The basic building blocks of the domain are entities, value objects, aggregates, services, repositories and factories. The <a target="_blank" href="https://sknitelius.gitbooks.io/cargo-tracker/content/characterization/characterization.html">Characterization</a> section of our documentation overviews how these concepts are implemented in the application using Java EE. Logical layers partitioning distinct concerns are super-imposed on the core concept of the domain. These layers generally consist of the UI/interface layer, the application layer, the domain layer (of course!) and the infrastructure layer respectively. The <a target="_blank" href="https://sknitelius.gitbooks.io/cargo-tracker/content/architecture/layers.html">Layers</a> section of our documentation explains the architectural layers in the application and how they relate to various Java EE APIs. The DDD community also fully embraces practices like automated testing, agile, emergent design, refactoring and Continuous Integration. We have incorporated all these practices into the application in a pragmatic fashion.</p>
+                        <p class="lead">The basic building blocks of the domain are entities, value objects, aggregates, services, 
+			    repositories and factories. The <a target="_blank" href="https://cargo-tracker.gitbook.io/documentation/characterization">Characterization</a> 
+			    section of our documentation overviews how these concepts are implemented in the application using Java EE. 
+			    Logical layers partitioning distinct concerns are super-imposed on the core concept of the domain. These 
+			    layers generally consist of the UI/interface layer, the application layer, the domain layer (of course!) 
+			    and the infrastructure layer respectively. The <a target="_blank" href="https://cargo-tracker.gitbook.io/documentation/layers">Layers</a> 
+			    section of our documentation explains the architectural layers in the application and how they relate to 
+			    various Java EE APIs. The DDD community also fully embraces practices like automated testing, agile, 
+			    emergent design, refactoring and Continuous Integration. We have incorporated all these practices into the 
+			    application in a pragmatic fashion.</p>
 
                         <center><img src="img/ddd-diagram.png"><br>(Diagram credited to <a target="_blank" href="http://www.infoq.com/minibooks/domain-driven-design-quickly">Domain-Driven Design Quickly</a>)</center><br>
 
-                        <p class="lead">One of the primary principles of DDD is that design should be focused on the business domain, not technology. The role of technology is to empower software developers to implement readable, productive, maintainable systems that mirror the real world, not place constraints on design choices. Most mainstream technology stacks today have matured enough to make this principle a reality, Java EE is no exception. In fact, with a single-minded focus on simplicity, POJOs, Java/OO centric strong typing, annotations and intelligent defaults that minimize system configuration and lets developers focus on solving the business problem, we think Java EE is one of the best platforms to support DDD. Java EE makes it possible to quickly and effectively produce a working system by annotating domain and application classes and implementing interface and infrastructure code. In the <a target="_blank" href="https://sknitelius.gitbooks.io/cargo-tracker/content/characterization/characterization.html">Characterization</a> and <a target="_blank" href="https://sknitelius.gitbooks.io/cargo-tracker/content/architecture/layers.html">Layers</a> sections of our documentation we have overviewed how some key Java EE APIs map to DDD concepts and pointed you to some of the most important bits of implementation code in the application. In the figure below, we have summarized how this mapping looks like visually as a handy cross reference.</p>
+                        <p class="lead">One of the primary principles of DDD is that design should be focused on the business domain, 
+			    not technology. The role of technology is to empower software developers to implement readable, productive, 
+			    maintainable systems that mirror the real world, not place constraints on design choices. Most mainstream 
+			    technology stacks today have matured enough to make this principle a reality, Java EE is no exception. In 
+			    fact, with a single-minded focus on simplicity, POJOs, Java/OO centric strong typing, annotations and 
+			    intelligent defaults that minimize system configuration and lets developers focus on solving the business 
+			    problem, we think Java EE is one of the best platforms to support DDD. Java EE makes it possible to quickly 
+			    and effectively produce a working system by annotating domain and application classes and implementing 
+			    interface and infrastructure code. In the <a target="_blank" href="https://cargo-tracker.gitbook.io/documentation/characterization">Characterization</a> and <a target="_blank" href="https://cargo-tracker.gitbook.io/documentation/layers">Layers</a> 
+			    sections of our documentation we have overviewed how some key Java EE APIs map to DDD concepts and pointed 
+			    you to some of the most important bits of implementation code in the application. In the figure below, we 
+			    have summarized how this mapping looks like visually as a handy cross reference.</p>
 
                         <center><img src="img/ddd_javaee.png"></center>
 
-                        <p class="lead">Note, the diagram above is most certainly not intended to be comprehensive. For example, besides JSF, JAX-RS, WebSocket and JBatch, some other technologies that are very useful in implementing interfaces are CDI (for JSF backing beans), Bean Validation, EJB (e.g. remote or JMS messaging end-points), JAX-WS (SOAP end-points), JSON-P and JSON-B. Similarly, you can choose to implement application services as transactional CDI beans as opposed to EJB and you can use Interceptors, the low level JTA API and Java EE Concurrency Utilities in the application layer. Value Objects can be implemented as either JPA embeddables or entities. In addition to JPA, JMS, JAX-RS clients, JAX-WS clients and EJB clients it is very likely may use CDI, Bean Validation, JCA and WebSocket clients to implement infrastructure components. The DeltaSpike Data module is very helpful in implementing repositories. The point really is that Java EE APIs are there to help you implement elegantly designed systems as needed.</p>
+                        <p class="lead">Note, the diagram above is most certainly not intended to be comprehensive. For example, 
+			    besides JSF, JAX-RS, WebSocket and JBatch, some other technologies that are very useful in implementing 
+			    interfaces are CDI (for JSF backing beans), Bean Validation, EJB (e.g. remote or JMS messaging end-points), 
+			    JAX-WS (SOAP end-points), JSON-P and JSON-B. Similarly, you can choose to implement application services as 
+			    transactional CDI beans as opposed to EJB and you can use Interceptors, the low level JTA API and Java EE 
+			    Concurrency Utilities in the application layer. Value Objects can be implemented as either JPA embeddables or 
+			    entities. In addition to JPA, JMS, JAX-RS clients, JAX-WS clients and EJB clients it is very likely may use 
+			    CDI, Bean Validation, JCA and WebSocket clients to implement infrastructure components. The DeltaSpike Data
+		            module is very helpful in implementing repositories. The point really is that Java EE APIs are there to help
+			    you implement elegantly designed systems as needed.</p>
                     </div>
                 </div>
             </div>

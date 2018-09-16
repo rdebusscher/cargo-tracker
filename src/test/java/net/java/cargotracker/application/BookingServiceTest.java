@@ -16,7 +16,6 @@ import javax.persistence.PersistenceContext;
 
 import net.java.cargotracker.application.internal.DefaultBookingService;
 import net.java.cargotracker.application.util.DateUtil;
-import net.java.cargotracker.application.util.JsonMoxyConfigurationContextResolver;
 import net.java.cargotracker.domain.model.cargo.Cargo;
 import net.java.cargotracker.domain.model.cargo.CargoRepository;
 import net.java.cargotracker.domain.model.cargo.Delivery;
@@ -139,7 +138,6 @@ public class BookingServiceTest {
                 .addClass(JpaHandlingEventRepository.class)
                 .addClass(JpaLocationRepository.class)
                 .addClass(ExternalRoutingService.class)
-                .addClass(JsonMoxyConfigurationContextResolver.class)
                 // Interface components
                 .addClass(TransitPath.class)
                 .addClass(TransitEdge.class)

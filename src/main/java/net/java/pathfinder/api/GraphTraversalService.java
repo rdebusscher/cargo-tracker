@@ -23,7 +23,7 @@ public class GraphTraversalService {
 
     @GET
     @Path("/shortest-path")
-    @Produces({"application/json", "application/xml; qs=.75"})
+    @Produces("application/json")
     // TODO Add internationalized messages for constraints.
     public List<TransitPath> findShortestPath(
             @NotNull @Size(min = 5, max = 5) @QueryParam("origin") String originUnLocode,

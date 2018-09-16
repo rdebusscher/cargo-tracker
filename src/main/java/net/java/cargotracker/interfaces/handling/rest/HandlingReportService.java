@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
 import net.java.cargotracker.application.ApplicationEvents;
 import net.java.cargotracker.domain.model.cargo.TrackingId;
 import net.java.cargotracker.domain.model.handling.HandlingEvent;
@@ -37,7 +36,7 @@ public class HandlingReportService {
     
     @POST
     @Path("/reports")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes("application/json")
     // TODO Better exception handling.
     public void submitReport(@NotNull @Valid HandlingReport handlingReport) {
         try {

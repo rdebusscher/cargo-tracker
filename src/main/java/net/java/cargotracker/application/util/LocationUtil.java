@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.primefaces.model.map.LatLng;
 
-/**
- *
- * @author davidd
- */
 public class LocationUtil {
 
     public static String getLocationName(String location) {

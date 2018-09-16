@@ -4,7 +4,6 @@ import javax.ws.rs.ApplicationPath;
 import net.java.cargotracker.interfaces.booking.rest.CargoMonitoringService;
 import net.java.cargotracker.interfaces.handling.rest.HandlingReportService;
 import net.java.pathfinder.api.GraphTraversalService;
-import org.glassfish.jersey.moxy.json.MoxyJsonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 
@@ -22,8 +21,5 @@ public class RestConfiguration extends ResourceConfig {
             CargoMonitoringService.class.getPackage().getName()});
         // Enable Bean Validation error messages.
         property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
-        // Providers - JSON.
-        register(new MoxyJsonFeature());
-        register(new JsonMoxyConfigurationContextResolver()); // TODO See if this can be removed.
     }
 }

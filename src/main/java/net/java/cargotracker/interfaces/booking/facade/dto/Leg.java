@@ -2,7 +2,7 @@ package net.java.cargotracker.interfaces.booking.facade.dto;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import net.java.cargotracker.application.util.DateUtil;
 
 /**
@@ -27,8 +27,8 @@ public class Leg implements Serializable {
             String fromName,
             String toUnLocode,
             String toName,
-            Date loadTime,
-            Date unloadTime) {
+            LocalDate loadTime,
+            LocalDate unloadTime) {
         this.voyageNumber = voyageNumber;
         this.fromUnLocode = fromUnLocode;
         this.fromName = fromName;

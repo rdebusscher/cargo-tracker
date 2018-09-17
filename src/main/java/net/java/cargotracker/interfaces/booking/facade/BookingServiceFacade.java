@@ -1,6 +1,6 @@
 package net.java.cargotracker.interfaces.booking.facade;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import net.java.cargotracker.interfaces.booking.facade.dto.CargoRoute;
 import net.java.cargotracker.interfaces.booking.facade.dto.Location;
@@ -12,7 +12,7 @@ import net.java.cargotracker.interfaces.booking.facade.dto.RouteCandidate;
  */
 public interface BookingServiceFacade {
 
-    String bookNewCargo(String origin, String destination, Date arrivalDeadline);
+    String bookNewCargo(String origin, String destination, LocalDate arrivalDeadline);
 
     CargoRoute loadCargoForRouting(String trackingId);
 

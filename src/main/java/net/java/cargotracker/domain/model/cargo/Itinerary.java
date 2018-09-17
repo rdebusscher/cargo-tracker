@@ -1,27 +1,23 @@
 package net.java.cargotracker.domain.model.cargo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.validation.constraints.Size;
-
 import net.java.cargotracker.domain.model.handling.HandlingEvent;
 import net.java.cargotracker.domain.model.location.Location;
-
 import org.apache.commons.lang3.Validate;
 
 @Embeddable
 public class Itinerary implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Date END_OF_DAYS = new Date(Long.MAX_VALUE);
     // Null object pattern.
     public static final Itinerary EMPTY_ITINERARY = new Itinerary();
     // TODO Look into why cascade delete doesn't work.
@@ -120,13 +116,13 @@ public class Itinerary implements Serializable {
     /**
      * @return Date when cargo arrives at final destination.
      */
-    Date getFinalArrivalDate() {
+    LocalDate getFinalArrivalDate() {
         Leg lastLeg = getLastLeg();
 
         if (lastLeg == null) {
-            return new Date(END_OF_DAYS.getTime());
+            return LocalDate.MAX;
         } else {
-            return new Date(lastLeg.getUnloadTime().getTime());
+            return lastLeg.getUnloadTime();
         }
     }
 

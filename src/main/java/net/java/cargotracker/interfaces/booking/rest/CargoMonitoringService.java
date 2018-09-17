@@ -9,7 +9,6 @@ import javax.json.JsonArrayBuilder;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import net.java.cargotracker.domain.model.cargo.Cargo;
 import net.java.cargotracker.domain.model.cargo.CargoRepository;
 
@@ -24,7 +23,7 @@ public class CargoMonitoringService {
     public CargoMonitoringService() {} 
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
     public JsonArray getAllCargo() {
         List<Cargo> cargos = cargoRepository.findAll();
 

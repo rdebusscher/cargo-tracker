@@ -1,6 +1,8 @@
 package net.java.cargotracker.domain.model.cargo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Iterator;
 import javax.persistence.Column;
@@ -10,8 +12,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import static net.java.cargotracker.domain.model.cargo.RoutingStatus.*;
 import static net.java.cargotracker.domain.model.cargo.TransportStatus.*;
@@ -33,7 +33,7 @@ public class Delivery implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // Null object pattern.
-    public static final Date ETA_UNKOWN = null;
+    public static final LocalDate ETA_UNKOWN = null;
     // Null object pattern
     public static final HandlingActivity NO_ACTIVITY = new HandlingActivity();
     @Enumerated(EnumType.STRING)
@@ -48,8 +48,7 @@ public class Delivery implements Serializable {
     private Voyage currentVoyage;
     @NotNull
     private boolean misdirected;
-    @Temporal(TemporalType.DATE)
-    private Date eta;
+    private LocalDate eta;
     @Embedded
     private HandlingActivity nextExpectedActivity;
     @Column(name = "unloaded_at_dest")
@@ -59,10 +58,9 @@ public class Delivery implements Serializable {
     @Column(name = "routing_status")
     @NotNull
     private RoutingStatus routingStatus;
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "calculated_at")
     @NotNull
-    private Date calculatedAt;
+    private LocalDateTime calculatedAt;
     @ManyToOne
     @JoinColumn(name = "last_event_id")
     private HandlingEvent lastEvent;
@@ -73,7 +71,7 @@ public class Delivery implements Serializable {
 
     public Delivery(HandlingEvent lastEvent, Itinerary itinerary,
             RouteSpecification routeSpecification) {
-        this.calculatedAt = new Date();
+        this.calculatedAt = LocalDateTime.now();
         this.lastEvent = lastEvent;
 
         this.misdirected = calculateMisdirectionStatus(itinerary);
@@ -164,9 +162,9 @@ public class Delivery implements Serializable {
         this.misdirected = misdirected;
     }
 
-    public Date getEstimatedTimeOfArrival() {
+    public LocalDate getEstimatedTimeOfArrival() {
         if (eta != ETA_UNKOWN) {
-            return new Date(eta.getTime());
+            return eta;
         } else {
             return ETA_UNKOWN;
         }
@@ -198,11 +196,11 @@ public class Delivery implements Serializable {
     /**
      * @return When this delivery was calculated.
      */
-    public Date getCalculatedAt() {
-        return new Date(calculatedAt.getTime());
+    public LocalDateTime getCalculatedAt() {
+        return calculatedAt;
     }
 
-    public void setCalculatedAt(Date calculatedAt) {
+    public void setCalculatedAt(LocalDateTime calculatedAt) {
         this.calculatedAt = calculatedAt;
     }
 
@@ -249,7 +247,7 @@ public class Delivery implements Serializable {
         }
     }
 
-    private Date calculateEta(Itinerary itinerary) {
+    private LocalDate calculateEta(Itinerary itinerary) {
         if (onTrack()) {
             return itinerary.getFinalArrivalDate();
         } else {

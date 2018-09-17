@@ -1,5 +1,6 @@
 package net.java.cargotracker.application;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import net.java.cargotracker.domain.model.cargo.Itinerary;
@@ -14,7 +15,7 @@ public interface BookingService {
     /**
      * Registers a new cargo in the tracking system, not yet routed.
      */
-    TrackingId bookNewCargo(UnLocode origin, UnLocode destination, Date arrivalDeadline);
+    TrackingId bookNewCargo(UnLocode origin, UnLocode destination, LocalDate arrivalDeadline);
 
     /**
      * Requests a list of itineraries describing possible routes for this cargo.

@@ -1,9 +1,8 @@
 package net.java.cargotracker.scenario;
 
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-
 import net.java.cargotracker.application.ApplicationEvents;
 import net.java.cargotracker.application.BookingService;
 import net.java.cargotracker.application.CargoInspectionService;
@@ -77,7 +76,7 @@ public class CargoLifecycleScenarioTest {
          and it should arrive in no more than two weeks. */
         Location origin = SampleLocations.HONGKONG;
         Location destination = SampleLocations.STOCKHOLM;
-        Date arrivalDeadline = DateUtil.toDate("2009-03-18");
+        LocalDate arrivalDeadline = LocalDate.of(2009, 03, 18);
 
         /* Use case 1: booking
 
@@ -331,29 +330,29 @@ public class CargoLifecycleScenarioTest {
                     return Arrays.asList(new Itinerary(Arrays.asList(new Leg(
                             SampleVoyages.v100, SampleLocations.HONGKONG,
                             SampleLocations.NEWYORK,
-                            DateUtil.toDate("2009-03-03"),
-                            DateUtil.toDate("2009-03-09")),
+                            LocalDate.of(2009, 3, 3),
+                            LocalDate.of(2009, 3, 9)),
                             new Leg(SampleVoyages.v200,
                                     SampleLocations.NEWYORK,
                                     SampleLocations.CHICAGO,
-                                    DateUtil.toDate("2009-03-10"),
-                                    DateUtil.toDate("2009-03-14")),
+                                    LocalDate.of(2009, 3, 10),
+                                    LocalDate.of(2009, 03, 14)),
                             new Leg(SampleVoyages.v200,
                                     SampleLocations.CHICAGO,
                                     SampleLocations.STOCKHOLM,
-                                    DateUtil.toDate("2009-03-07"),
-                                    DateUtil.toDate("2009-03-11")))));
+                                    LocalDate.of(2009, 3, 7),
+                                    LocalDate.of(2009, 3, 11)))));
                 } else {
-                    // Tokyo - Hamburg - SampleLocations.STOCKHOLM, rerouting misdirected cargo from Tokyo 
+                    // Tokyo - Hamburg - SampleLocations.STOCKHOLM, rerouting misdirected cargo from Tokyo
                     return Arrays.asList(new Itinerary(Arrays.asList(new Leg(
                             SampleVoyages.v300, SampleLocations.TOKYO,
                             SampleLocations.HAMBURG,
-                            DateUtil.toDate("2009-03-08"),
-                            DateUtil.toDate("2009-03-12")), new Leg(
-                                    SampleVoyages.v400, SampleLocations.HAMBURG,
-                                    SampleLocations.STOCKHOLM,
-                                    DateUtil.toDate("2009-03-14"),
-                                    DateUtil.toDate("2009-03-15")))));
+                            LocalDate.of(2009, 3, 8),
+                            LocalDate.of(2009, 3, 12)), new Leg(
+                            SampleVoyages.v400, SampleLocations.HAMBURG,
+                            SampleLocations.STOCKHOLM,
+                            LocalDate.of(2009, 3, 14),
+                            LocalDate.of(2009, 3, 15)))));
                 }
             }
         };

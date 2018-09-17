@@ -1,7 +1,7 @@
 package net.java.pathfinder.api;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Represents an edge in a path through a graph, describing the route of a
@@ -12,15 +12,15 @@ public class TransitEdge implements Serializable {
     private String voyageNumber;
     private String fromUnLocode;
     private String toUnLocode;
-    private Date fromDate;
-    private Date toDate;
+    private LocalDate fromDate;
+    private LocalDate toDate;
 
     public TransitEdge() {
         // Nothing to do.
     }
 
     public TransitEdge(String voyageNumber, String fromUnLocode,
-            String toUnLocode, Date fromDate, Date toDate) {
+            String toUnLocode, LocalDate fromDate, LocalDate toDate) {
         this.voyageNumber = voyageNumber;
         this.fromUnLocode = fromUnLocode;
         this.toUnLocode = toUnLocode;
@@ -52,19 +52,19 @@ public class TransitEdge implements Serializable {
         this.toUnLocode = toUnLocode;
     }
 
-    public Date getFromDate() {
+    public LocalDate getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
+    public void setFromDate(LocalDate fromDate) {
         this.fromDate = fromDate;
     }
 
-    public Date getToDate() {
+    public LocalDate getToDate() {
         return toDate;
     }
 
-    public void setToDate(Date toDate) {
+    public void setToDate(LocalDate toDate) {
         this.toDate = toDate;
     }
 

@@ -1,6 +1,6 @@
 package net.java.cargotracker.application;
 
-import net.java.cargotracker.application.ApplicationEvents;
+import java.time.LocalDate;
 import java.util.Date;
 import net.java.cargotracker.application.internal.DefaultHandlingEventService;
 import net.java.cargotracker.domain.model.cargo.Cargo;
@@ -24,7 +24,7 @@ public class HandlingEventServiceTest {
     private LocationRepository locationRepository;
     private Cargo cargo = new Cargo(new TrackingId("ABC"),
             new RouteSpecification(SampleLocations.HAMBURG, SampleLocations.TOKYO,
-            new Date()));
+                    LocalDate.now()));
 
     protected void setUp() throws Exception {
 //        cargoRepository = createMock(CargoRepository.class);

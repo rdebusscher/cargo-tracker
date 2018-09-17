@@ -1,20 +1,17 @@
 package net.java.cargotracker.domain.model.cargo;
 
-import static org.junit.Assert.*;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
-
-import net.java.cargotracker.application.util.DateUtil;
 import net.java.cargotracker.domain.model.handling.HandlingEvent;
 import net.java.cargotracker.domain.model.handling.HandlingHistory;
 import net.java.cargotracker.domain.model.location.Location;
 import net.java.cargotracker.domain.model.location.SampleLocations;
 import net.java.cargotracker.domain.model.voyage.Voyage;
 import net.java.cargotracker.domain.model.voyage.VoyageNumber;
-
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class CargoTest {
@@ -30,7 +27,8 @@ public class CargoTest {
     @Test
     public void testConstruction() {
         TrackingId trackingId = new TrackingId("XYZ");
-        Date arrivalDeadline = DateUtil.toDate("2009-03-13");
+        LocalDate arrivalDeadline = LocalDate.of(2009, 3, 13);
+
         RouteSpecification routeSpecification = new RouteSpecification(
                 SampleLocations.STOCKHOLM, SampleLocations.MELBOURNE,
                 arrivalDeadline);
@@ -50,19 +48,19 @@ public class CargoTest {
     public void testRoutingStatus() {
         Cargo cargo = new Cargo(new TrackingId("XYZ"), new RouteSpecification(
                 SampleLocations.STOCKHOLM, SampleLocations.MELBOURNE,
-                new Date()));
+                LocalDate.now()));
         final Itinerary good = new Itinerary();
         Itinerary bad = new Itinerary();
         @SuppressWarnings("serial")
         RouteSpecification acceptOnlyGood = new RouteSpecification(
                 cargo.getOrigin(), cargo.getRouteSpecification()
-                .getDestination(), new Date()) {
+                .getDestination(), LocalDate.now()) {
 
-                    @Override
-                    public boolean isSatisfiedBy(Itinerary itinerary) {
-                        return itinerary == good;
-                    }
-                };
+            @Override
+            public boolean isSatisfiedBy(Itinerary itinerary) {
+                return itinerary == good;
+            }
+        };
 
         cargo.specifyNewRoute(acceptOnlyGood);
 
@@ -81,8 +79,7 @@ public class CargoTest {
     @Test
     public void testLastKnownLocationUnknownWhenNoEvents() {
         Cargo cargo = new Cargo(new TrackingId("XYZ"), new RouteSpecification(
-                SampleLocations.STOCKHOLM, SampleLocations.MELBOURNE,
-                new Date()));
+                SampleLocations.STOCKHOLM, SampleLocations.MELBOURNE, LocalDate.now()));
 
         assertEquals(Location.UNKNOWN, cargo.getDelivery()
                 .getLastKnownLocation());
@@ -134,7 +131,7 @@ public class CargoTest {
 
         Voyage voyage = new Voyage.Builder(new VoyageNumber("0123"),
                 SampleLocations.HANGZOU).addMovement(SampleLocations.NEWYORK,
-                        new Date(), new Date()).build();
+                new Date(), new Date()).build();
 
         // Adding an unload event, but not at the final destination
         events.add(new HandlingEvent(cargo, new Date(20), new Date(),
@@ -158,8 +155,7 @@ public class CargoTest {
     // TODO: Generate test data some better way
     private Cargo populateCargoReceivedStockholm() throws Exception {
         Cargo cargo = new Cargo(new TrackingId("XYZ"), new RouteSpecification(
-                SampleLocations.STOCKHOLM, SampleLocations.MELBOURNE,
-                new Date()));
+                SampleLocations.STOCKHOLM, SampleLocations.MELBOURNE, LocalDate.now()));
 
         HandlingEvent event = new HandlingEvent(cargo, getDate("2007-12-01"),
                 new Date(), HandlingEvent.Type.RECEIVE,
@@ -183,7 +179,7 @@ public class CargoTest {
     private Cargo populateCargoOffHongKong() throws Exception {
         Cargo cargo = new Cargo(new TrackingId("XYZ"), new RouteSpecification(
                 SampleLocations.STOCKHOLM, SampleLocations.MELBOURNE,
-                new Date()));
+                LocalDate.now()));
 
         events.add(new HandlingEvent(cargo, getDate("2007-12-01"), new Date(),
                 HandlingEvent.Type.LOAD, SampleLocations.STOCKHOLM, voyage));
@@ -203,7 +199,7 @@ public class CargoTest {
     private Cargo populateCargoOnHamburg() throws Exception {
         Cargo cargo = new Cargo(new TrackingId("XYZ"), new RouteSpecification(
                 SampleLocations.STOCKHOLM, SampleLocations.MELBOURNE,
-                new Date()));
+                LocalDate.now()));
 
         events.add(new HandlingEvent(cargo, getDate("2007-12-01"), new Date(),
                 HandlingEvent.Type.LOAD, SampleLocations.STOCKHOLM, voyage));
@@ -220,7 +216,7 @@ public class CargoTest {
     private Cargo populateCargoOffMelbourne() throws Exception {
         Cargo cargo = new Cargo(new TrackingId("XYZ"), new RouteSpecification(
                 SampleLocations.STOCKHOLM, SampleLocations.MELBOURNE,
-                new Date()));
+                LocalDate.now()));
 
         events.add(new HandlingEvent(cargo, getDate("2007-12-01"), new Date(),
                 HandlingEvent.Type.LOAD, SampleLocations.STOCKHOLM, voyage));
@@ -247,7 +243,7 @@ public class CargoTest {
         // A cargo with no itinerary is not misdirected
         Cargo cargo = new Cargo(new TrackingId("TRKID"),
                 new RouteSpecification(SampleLocations.SHANGHAI,
-                        SampleLocations.GOTHENBURG, new Date()));
+                        SampleLocations.GOTHENBURG, LocalDate.now()));
         assertFalse(cargo.getDelivery().isMisdirected());
 
         cargo = setUpCargoWithItinerary(SampleLocations.SHANGHAI,
@@ -256,7 +252,7 @@ public class CargoTest {
         // A cargo with no handling events is not misdirected
         assertFalse(cargo.getDelivery().isMisdirected());
 
-        Collection<HandlingEvent> handlingEvents = new ArrayList<HandlingEvent>();
+        Collection<HandlingEvent> handlingEvents = new ArrayList<>();
 
         // Happy path
         handlingEvents.add(new HandlingEvent(cargo, new Date(10), new Date(20),
@@ -284,7 +280,7 @@ public class CargoTest {
         // Try a couple of failing ones
         cargo = setUpCargoWithItinerary(SampleLocations.SHANGHAI,
                 SampleLocations.ROTTERDAM, SampleLocations.GOTHENBURG);
-        handlingEvents = new ArrayList<HandlingEvent>();
+        handlingEvents = new ArrayList<>();
 
         handlingEvents.add(new HandlingEvent(cargo, new Date(), new Date(),
                 HandlingEvent.Type.RECEIVE, SampleLocations.HANGZOU));
@@ -295,7 +291,7 @@ public class CargoTest {
 
         cargo = setUpCargoWithItinerary(SampleLocations.SHANGHAI,
                 SampleLocations.ROTTERDAM, SampleLocations.GOTHENBURG);
-        handlingEvents = new ArrayList<HandlingEvent>();
+        handlingEvents = new ArrayList<>();
 
         handlingEvents.add(new HandlingEvent(cargo, new Date(10), new Date(20),
                 HandlingEvent.Type.RECEIVE, SampleLocations.SHANGHAI));
@@ -313,7 +309,7 @@ public class CargoTest {
 
         cargo = setUpCargoWithItinerary(SampleLocations.SHANGHAI,
                 SampleLocations.ROTTERDAM, SampleLocations.GOTHENBURG);
-        handlingEvents = new ArrayList<HandlingEvent>();
+        handlingEvents = new ArrayList<>();
 
         handlingEvents.add(new HandlingEvent(cargo, new Date(10), new Date(20),
                 HandlingEvent.Type.RECEIVE, SampleLocations.SHANGHAI));
@@ -333,11 +329,11 @@ public class CargoTest {
     private Cargo setUpCargoWithItinerary(Location origin, Location midpoint,
             Location destination) {
         Cargo cargo = new Cargo(new TrackingId("CARGO1"),
-                new RouteSpecification(origin, destination, new Date()));
+                new RouteSpecification(origin, destination, LocalDate.now()));
 
         Itinerary itinerary = new Itinerary(Arrays.asList(new Leg(voyage,
-                origin, midpoint, new Date(), new Date()), new Leg(voyage,
-                        midpoint, destination, new Date(), new Date())));
+                origin, midpoint, LocalDate.now(), LocalDate.now()), 
+                new Leg(voyage, midpoint, destination, LocalDate.now(), LocalDate.now())));
 
         cargo.assignToRoute(itinerary);
         return cargo;

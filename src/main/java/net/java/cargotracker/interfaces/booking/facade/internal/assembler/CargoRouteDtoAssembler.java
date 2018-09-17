@@ -13,13 +13,15 @@ public class CargoRouteDtoAssembler {
         CargoRoute dto = new CargoRoute(
                 cargo.getTrackingId().getIdString(),
                 cargo.getOrigin().getName() + " (" + cargo.getOrigin().getUnLocode().getIdString() + ")",
-                cargo.getRouteSpecification().getDestination().getName() + " (" + cargo.getRouteSpecification().getDestination().getUnLocode().getIdString() + ")",
+                cargo.getRouteSpecification().getDestination().getName()
+                + " (" + cargo.getRouteSpecification().getDestination().getUnLocode().getIdString() + ")",
                 cargo.getRouteSpecification().getArrivalDeadline(),
                 cargo.getDelivery().getRoutingStatus()
-                .sameValueAs(RoutingStatus.MISROUTED),
+                        .sameValueAs(RoutingStatus.MISROUTED),
                 cargo.getDelivery().getTransportStatus()
-                .sameValueAs(TransportStatus.CLAIMED),
-                cargo.getDelivery().getLastKnownLocation().getName() + " (" + cargo.getDelivery().getLastKnownLocation().getUnLocode().getIdString() + ")",
+                        .sameValueAs(TransportStatus.CLAIMED),
+                cargo.getDelivery().getLastKnownLocation().getName()
+                + " (" + cargo.getDelivery().getLastKnownLocation().getUnLocode().getIdString() + ")",
                 cargo.getDelivery().getTransportStatus().name());
 
         for (Leg leg : cargo.getItinerary().getLegs()) {

@@ -1,5 +1,7 @@
 package net.java.pathfinder.api;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -18,8 +20,6 @@ public class GraphTraversalService {
     @Inject
     private GraphDao dao;
     private final Random random = new Random();
-    private static final long ONE_MIN_MS = 1000 * 60;
-    private static final long ONE_DAY_MS = ONE_MIN_MS * 60 * 24;
 
     @GET
     @Path("/shortest-path")
@@ -29,7 +29,7 @@ public class GraphTraversalService {
             @NotNull @Size(min = 5, max = 5) @QueryParam("origin") String originUnLocode,
             @NotNull @Size(min = 5, max = 5) @QueryParam("destination") String destinationUnLocode,
             @QueryParam("deadline") String deadline) {
-        Date date = nextDate(new Date());
+        LocalDateTime date = nextDate(LocalDateTime.now());
 
         List<String> allVertices = dao.listLocations();
         allVertices.remove(originUnLocode);
@@ -45,13 +45,13 @@ public class GraphTraversalService {
                     allVertices.size() - 1);
             String firstLegTo = allVertices.get(0);
 
-            Date fromDate = nextDate(date);
-            Date toDate = nextDate(fromDate);
+            LocalDateTime fromDate = nextDate(date);
+            LocalDateTime toDate = nextDate(fromDate);
             date = nextDate(toDate);
 
             transitEdges.add(new TransitEdge(
                     dao.getVoyageNumber(originUnLocode, firstLegTo),
-                    originUnLocode, firstLegTo, fromDate, toDate));
+                    originUnLocode, firstLegTo, fromDate.toLocalDate(), toDate.toLocalDate()));
 
             for (int j = 0; j < allVertices.size() - 1; j++) {
                 String current = allVertices.get(j);
@@ -60,7 +60,7 @@ public class GraphTraversalService {
                 toDate = nextDate(fromDate);
                 date = nextDate(toDate);
                 transitEdges.add(new TransitEdge(dao.getVoyageNumber(current,
-                        next), current, next, fromDate, toDate));
+                        next), current, next, fromDate.toLocalDate(), toDate.toLocalDate()));
             }
 
             String lastLegFrom = allVertices.get(allVertices.size() - 1);
@@ -68,7 +68,8 @@ public class GraphTraversalService {
             toDate = nextDate(fromDate);
             transitEdges.add(new TransitEdge(
                     dao.getVoyageNumber(lastLegFrom, destinationUnLocode),
-                    lastLegFrom, destinationUnLocode, fromDate, toDate));
+                    lastLegFrom, destinationUnLocode, fromDate.toLocalDate(), 
+                    toDate.toLocalDate()));
 
             candidates.add(new TransitPath(transitEdges));
         }
@@ -76,9 +77,8 @@ public class GraphTraversalService {
         return candidates;
     }
 
-    private Date nextDate(Date date) {
-        return new Date(date.getTime() + ONE_DAY_MS
-                + (random.nextInt(1000) - 500) * ONE_MIN_MS);
+    private LocalDateTime nextDate(LocalDateTime date) {
+        return date.plusDays(1).plusMinutes((random.nextInt(1000) - 500));
     }
 
     private int getRandomNumberOfCandidates() {

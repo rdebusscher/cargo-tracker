@@ -1,6 +1,7 @@
 package net.java.cargotracker.application.util;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -112,24 +113,24 @@ public class SampleDataGenerator {
 
         RouteSpecification routeSpecification1 = new RouteSpecification(
                 SampleLocations.HONGKONG, SampleLocations.HELSINKI,
-                DateUtil.toDate(LocalDate.now().plusDays(15)));
+                LocalDate.now().plusDays(15));
         Cargo abc123 = new Cargo(trackingId1, routeSpecification1);
 
         Itinerary itinerary1 = new Itinerary(Arrays.asList(
                 new Leg(SampleVoyages.HONGKONG_TO_NEW_YORK,
                         SampleLocations.HONGKONG, SampleLocations.NEWYORK,
-                        DateUtil.toDate(LocalDate.now().minusDays(7)),
-                        DateUtil.toDate(LocalDate.now().minusDays(1))),
+                        LocalDate.now().minusDays(7),
+                        LocalDate.now().minusDays(1)),
                 new Leg(SampleVoyages.NEW_YORK_TO_DALLAS,
                         SampleLocations.NEWYORK,
                         SampleLocations.DALLAS,
-                        DateUtil.toDate(LocalDate.now().plusDays(2)),
-                        DateUtil.toDate(LocalDate.now().plusDays(6))),
+                        LocalDate.now().plusDays(2),
+                        LocalDate.now().plusDays(6)),
                 new Leg(SampleVoyages.DALLAS_TO_HELSINKI,
                         SampleLocations.DALLAS,
                         SampleLocations.HELSINKI,
-                        DateUtil.toDate(LocalDate.now().plusDays(8)),
-                        DateUtil.toDate(LocalDate.now().plusDays(14)))));
+                        LocalDate.now().plusDays(8),
+                        LocalDate.now().plusDays(14))));
         abc123.assignToRoute(itinerary1);
 
         entityManager.persist(abc123);
@@ -171,22 +172,22 @@ public class SampleDataGenerator {
 
         RouteSpecification routeSpecification2 = new RouteSpecification(
                 SampleLocations.HANGZOU, SampleLocations.STOCKHOLM,
-                DateUtil.toDate(LocalDate.now().plusDays(18)));
+                LocalDate.now().plusDays(18));
         Cargo jkl567 = new Cargo(trackingId2, routeSpecification2);
 
         Itinerary itinerary2 = new Itinerary(Arrays.asList(
                 new Leg(SampleVoyages.HONGKONG_TO_NEW_YORK,
                         SampleLocations.HANGZOU, SampleLocations.NEWYORK,
-                        DateUtil.toDate(LocalDate.now().minusDays(10)),
-                        DateUtil.toDate(LocalDate.now().minusDays(3))),
+                        LocalDate.now().minusDays(10),
+                        LocalDate.now().minusDays(3)),
                 new Leg(SampleVoyages.NEW_YORK_TO_DALLAS,
                         SampleLocations.NEWYORK, SampleLocations.DALLAS,
-                        DateUtil.toDate(LocalDate.now().minusDays(2)),
-                        DateUtil.toDate(LocalDate.now().plusDays(2))),
+                        LocalDate.now().minusDays(2),
+                        LocalDate.now().plusDays(2)),
                 new Leg(SampleVoyages.DALLAS_TO_HELSINKI, SampleLocations.DALLAS,
                         SampleLocations.STOCKHOLM,
-                        DateUtil.toDate(LocalDate.now().plusDays(6)),
-                        DateUtil.toDate(LocalDate.now().plusDays(15)))));
+                        LocalDate.now().plusDays(6),
+                        LocalDate.now().plusDays(15))));
         jkl567.assignToRoute(itinerary2);
 
         entityManager.persist(jkl567);
@@ -233,7 +234,7 @@ public class SampleDataGenerator {
 
         RouteSpecification routeSpecification3 = new RouteSpecification(
                 SampleLocations.HONGKONG, SampleLocations.MELBOURNE,
-                DateUtil.toDate(LocalDate.now().plusMonths(2)));
+                LocalDate.now().plusMonths(2));
 
         Cargo def789 = new Cargo(trackingId3, routeSpecification3);
         entityManager.persist(def789);
@@ -242,7 +243,7 @@ public class SampleDataGenerator {
         TrackingId trackingId4 = new TrackingId("MNO456");
         RouteSpecification routeSpecification4 = new RouteSpecification(
                 SampleLocations.NEWYORK, SampleLocations.DALLAS,
-                DateUtil.toDate(LocalDate.now().minusDays(24)));
+                LocalDate.now().minusDays(24));
 
         Cargo mno456 = new Cargo(trackingId4, routeSpecification4);
 
@@ -251,9 +252,8 @@ public class SampleDataGenerator {
                         new Leg(SampleVoyages.NEW_YORK_TO_DALLAS,
                                 SampleLocations.NEWYORK,
                                 SampleLocations.DALLAS,
-                                DateUtil.toDate(LocalDate.now().minusDays(34)),
-                                DateUtil.toDate(LocalDate.now().minusDays(28)))
-                ));
+                                LocalDate.now().minusDays(34),
+                                LocalDate.now().minusDays(28))));
 
         mno456.assignToRoute(itinerary4);
         entityManager.persist(mno456);

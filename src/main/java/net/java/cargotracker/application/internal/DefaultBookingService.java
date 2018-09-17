@@ -1,7 +1,7 @@
 package net.java.cargotracker.application.internal;
 
+import java.time.LocalDate;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,7 +34,7 @@ public class DefaultBookingService implements BookingService {
     @Override
     public TrackingId bookNewCargo(UnLocode originUnLocode,
             UnLocode destinationUnLocode,
-            Date arrivalDeadline) {
+            LocalDate arrivalDeadline) {
         TrackingId trackingId = cargoRepository.nextTrackingId();
         Location origin = locationRepository.find(originUnLocode);
         Location destination = locationRepository.find(destinationUnLocode);

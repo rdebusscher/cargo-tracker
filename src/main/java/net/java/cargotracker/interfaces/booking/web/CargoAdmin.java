@@ -1,5 +1,6 @@
 package net.java.cargotracker.interfaces.booking.web;
 
+import java.time.LocalDate;
 import java.util.*;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -31,7 +32,7 @@ public class CargoAdmin {
     private List<Location> locations;
     private List<String> unlocodes;
     private List<CargoRoute> cargos;
-    private Date arrivalDeadline;
+    private LocalDate arrivalDeadline;
     private String originUnlocode;
     private String destinationUnlocode;
     private String trackingId;
@@ -51,11 +52,11 @@ public class CargoAdmin {
         return cargos;
     }
 
-    public Date getArrivalDeadline() {
+    public LocalDate getArrivalDeadline() {
         return arrivalDeadline;
     }
 
-    public void setArrivalDeadline(Date arrivalDeadline) {
+    public void setArrivalDeadline(LocalDate arrivalDeadline) {
         this.arrivalDeadline = arrivalDeadline;
     }
 

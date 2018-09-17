@@ -1,8 +1,7 @@
 package net.java.cargotracker.interfaces.booking.web;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -31,7 +30,7 @@ public class Registration implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final String FORMAT = "yyyy-MM-dd";
     List<Location> locations;
-    private String arrivalDeadline;
+    private LocalDate arrivalDeadline;
     private String originUnlocode;
     private String destinationUnlocode;
     @Inject
@@ -41,11 +40,11 @@ public class Registration implements Serializable {
         return locations;
     }
 
-    public String getArrivalDeadline() {
+    public LocalDate getArrivalDeadline() {
         return arrivalDeadline;
     }
 
-    public void setArrivalDeadline(String arrivalDeadline) {
+    public void setArrivalDeadline(LocalDate arrivalDeadline) {
         this.arrivalDeadline = arrivalDeadline;
     }
 
@@ -73,23 +72,19 @@ public class Registration implements Serializable {
     public String register() {
         String trackingId = null;
 
-        try {
-            if (!originUnlocode.equals(destinationUnlocode)) {
-                trackingId = bookingServiceFacade.bookNewCargo(
-                        originUnlocode,
-                        destinationUnlocode,
-                        new SimpleDateFormat(FORMAT).parse(arrivalDeadline));
-            } else {
-                // TODO See if this can be injected.
-                FacesContext context = FacesContext.getCurrentInstance();
-                FacesMessage message = new FacesMessage(
-                        "Origin and destination cannot be the same.");
-                message.setSeverity(FacesMessage.SEVERITY_ERROR);
-                context.addMessage(null, message);
-                return null;
-            }
-        } catch (ParseException e) {
-            throw new RuntimeException("Error parsing date", e);
+        if (!originUnlocode.equals(destinationUnlocode)) {
+            trackingId = bookingServiceFacade.bookNewCargo(
+                    originUnlocode,
+                    destinationUnlocode,
+                    arrivalDeadline);
+        } else {
+            // TODO See if this can be injected.
+            FacesContext context = FacesContext.getCurrentInstance();
+            FacesMessage message = new FacesMessage(
+                    "Origin and destination cannot be the same.");
+            message.setSeverity(FacesMessage.SEVERITY_ERROR);
+            context.addMessage(null, message);
+            return null;
         }
 
         return "show.xhtml?faces-redirect=true&trackingId=" + trackingId;

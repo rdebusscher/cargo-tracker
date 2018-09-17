@@ -2,6 +2,8 @@ package net.java.cargotracker.interfaces.booking.facade.internal.assembler;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import net.java.cargotracker.domain.model.cargo.Itinerary;
@@ -16,8 +18,8 @@ import net.java.cargotracker.interfaces.booking.facade.dto.RouteCandidate;
 
 public class ItineraryCandidateDtoAssembler {
 
-    private static final SimpleDateFormat DATE_FORMAT
-            = new SimpleDateFormat("MM/dd/yyyy hh:mm a z");
+    private static final DateTimeFormatter DATE_FORMAT
+            = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a z");
 
     public RouteCandidate toDTO(Itinerary itinerary) {
         List<net.java.cargotracker.interfaces.booking.facade.dto.Leg> legDTOs = new ArrayList<>(
@@ -46,22 +48,19 @@ public class ItineraryCandidateDtoAssembler {
             LocationRepository locationRepository) {
         List<Leg> legs = new ArrayList<>(routeCandidateDTO.getLegs().size());
 
-        for (net.java.cargotracker.interfaces.booking.facade.dto.Leg legDTO
+        for (net.java.cargotracker.interfaces.booking.facade.dto.Leg legDto
                 : routeCandidateDTO.getLegs()) {
             VoyageNumber voyageNumber = new VoyageNumber(
-                    legDTO.getVoyageNumber());
+                    legDto.getVoyageNumber());
             Voyage voyage = voyageRepository.find(voyageNumber);
-            Location from = locationRepository.find(new UnLocode(legDTO
+            Location from = locationRepository.find(new UnLocode(legDto
                     .getFromUnLocode()));
-            Location to = locationRepository.find(new UnLocode(legDTO.getToUnLocode()));
+            Location to = locationRepository.find(new UnLocode(legDto.getToUnLocode()));
 
-            try {
-                legs.add(new Leg(voyage, from, to,
-                        DATE_FORMAT.parse(legDTO.getLoadTime()),
-                        DATE_FORMAT.parse(legDTO.getUnloadTime())));
-            } catch (ParseException ex) {
-                throw new RuntimeException("Could not parse date", ex);
-            }
+            legs.add(new Leg(voyage, from, to,
+                    LocalDate.parse(legDto.getLoadTime(), DATE_FORMAT),
+                    LocalDate.parse(legDto.getUnloadTime(),
+                            DATE_FORMAT)));
         }
 
         return new Itinerary(legs);

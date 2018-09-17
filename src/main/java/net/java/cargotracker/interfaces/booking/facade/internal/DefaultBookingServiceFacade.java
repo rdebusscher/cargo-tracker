@@ -1,8 +1,8 @@
 package net.java.cargotracker.interfaces.booking.facade.internal;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -45,7 +45,7 @@ public class DefaultBookingServiceFacade implements BookingServiceFacade,
 
     @Override
     public String bookNewCargo(String origin, String destination,
-            Date arrivalDeadline) {
+            LocalDate arrivalDeadline) {
         TrackingId trackingId = bookingService.bookNewCargo(
                 new UnLocode(origin), new UnLocode(destination),
                 arrivalDeadline);

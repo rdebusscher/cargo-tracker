@@ -1,9 +1,9 @@
 package net.java.cargotracker.interfaces.tracking.web;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import static net.java.cargotracker.application.util.LocationUtil.getCoordinatesForLocation;
 import net.java.cargotracker.domain.model.cargo.Cargo;
@@ -85,7 +85,7 @@ public class CargoTrackingViewAdapter {
     }
 
     public String getEta() {
-        Date eta = cargo.getDelivery().getEstimatedTimeOfArrival();
+        LocalDate eta = cargo.getDelivery().getEstimatedTimeOfArrival();
 
         if (eta == null) {
             return "?";

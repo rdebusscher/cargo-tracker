@@ -1,6 +1,8 @@
 package net.java.cargotracker.domain.model.cargo;
 
 import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +12,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.flow.FlowScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import static net.java.cargotracker.application.util.DateUtil.computeDuration;
 import net.java.cargotracker.interfaces.booking.facade.dto.Location;
 import net.java.cargotracker.interfaces.booking.facade.BookingServiceFacade;
 import org.primefaces.context.RequestContext;
@@ -21,12 +22,12 @@ import org.primefaces.context.RequestContext;
  */
 @Named
 @FlowScoped("booking")
-public class BookingBackingBean implements Serializable{
+public class BookingBackingBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private static final String FORMAT = "yyyy-MM-dd";
     List<Location> locations;
-    private Date arrivalDeadline;
+    private LocalDate arrivalDeadline;
     private String originUnlocode;
     private String originName;
     private String destinationName;
@@ -68,7 +69,7 @@ public class BookingBackingBean implements Serializable{
         return filteredLocations;
     }
 
-    public Date getArrivalDeadline() {
+    public LocalDate getArrivalDeadline() {
         return arrivalDeadline;
     }
 
@@ -114,7 +115,7 @@ public class BookingBackingBean implements Serializable{
         return duration;
     }
 
-    public void setArrivalDeadline(Date arrivalDeadline) {
+    public void setArrivalDeadline(LocalDate arrivalDeadline) {
         this.arrivalDeadline = arrivalDeadline;
     }
 
@@ -159,12 +160,14 @@ public class BookingBackingBean implements Serializable{
     }
 
     public void deadlineUpdated() {
-        duration = computeDuration(arrivalDeadline);
+        duration = Duration.between(LocalDate.now(), arrivalDeadline).toDays();
+
         if (duration >= MIN_JOURNEY_DURATION) {
             bookable = true;
         } else {
             bookable = false;
         }
+
         RequestContext.getCurrentInstance().update("dateForm:durationPanel");
         RequestContext.getCurrentInstance().update("dateForm:bookBtn");
     }

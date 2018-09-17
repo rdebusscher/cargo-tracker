@@ -1,15 +1,14 @@
 package net.java.cargotracker.domain.model.cargo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import net.java.cargotracker.domain.model.location.Location;
 import net.java.cargotracker.domain.model.voyage.Voyage;
@@ -36,21 +35,19 @@ public class Leg implements Serializable {
     @JoinColumn(name = "unload_location_id")
     @NotNull
     private Location unloadLocation;
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "load_time")
     @NotNull
-    private Date loadTime;
-    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDate loadTime;
     @Column(name = "unload_time")
     @NotNull
-    private Date unloadTime;
+    private LocalDate unloadTime;
 
     public Leg() {
         // Nothing to initialize.
     }
 
     public Leg(Voyage voyage, Location loadLocation, Location unloadLocation,
-            Date loadTime, Date unloadTime) {
+            LocalDate loadTime, LocalDate unloadTime) {
         Validate.noNullElements(new Object[]{voyage, loadLocation,
             unloadLocation, loadTime, unloadTime});
 
@@ -73,21 +70,21 @@ public class Leg implements Serializable {
         return unloadLocation;
     }
 
-    public Date getLoadTime() {
-        return new Date(loadTime.getTime());
+    public LocalDate getLoadTime() {
+        return loadTime;
     }
 
-    public Date getUnloadTime() {
-        return new Date(unloadTime.getTime());
+    public LocalDate getUnloadTime() {
+        return unloadTime;
     }
 
     private boolean sameValueAs(Leg other) {
         return other != null
                 && new EqualsBuilder().append(this.voyage, other.voyage)
-                .append(this.loadLocation, other.loadLocation)
-                .append(this.unloadLocation, other.unloadLocation)
-                .append(this.loadTime, other.loadTime)
-                .append(this.unloadTime, other.unloadTime).isEquals();
+                        .append(this.loadLocation, other.loadLocation)
+                        .append(this.unloadLocation, other.unloadLocation)
+                        .append(this.loadTime, other.loadTime)
+                        .append(this.unloadTime, other.unloadTime).isEquals();
     }
 
     @Override

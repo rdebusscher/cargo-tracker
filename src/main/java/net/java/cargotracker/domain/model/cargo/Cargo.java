@@ -92,13 +92,12 @@ import org.apache.commons.lang3.Validate;
  * the cargo is (on board carrier, in port etc), are captured in this aggregate.
  */
 @Entity
-@NamedQueries({
-    @NamedQuery(name = "Cargo.findAll",
-            query = "Select c from Cargo c"),
-    @NamedQuery(name = "Cargo.findByTrackingId",
-            query = "Select c from Cargo c where c.trackingId = :trackingId"),
-    @NamedQuery(name = "Cargo.getAllTrackingIds",
-            query = "Select c.trackingId from Cargo c") })
+@NamedQuery(name = "Cargo.findAll",
+        query = "Select c from Cargo c")
+@NamedQuery(name = "Cargo.findByTrackingId",
+        query = "Select c from Cargo c where c.trackingId = :trackingId")
+@NamedQuery(name = "Cargo.getAllTrackingIds",
+        query = "Select c.trackingId from Cargo c")
 public class Cargo implements Serializable {
 
     private static final long serialVersionUID = 1L;

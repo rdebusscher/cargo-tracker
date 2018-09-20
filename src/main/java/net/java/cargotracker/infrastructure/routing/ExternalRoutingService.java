@@ -23,6 +23,7 @@ import net.java.cargotracker.domain.model.voyage.VoyageRepository;
 import net.java.cargotracker.domain.service.RoutingService;
 import net.java.pathfinder.api.TransitEdge;
 import net.java.pathfinder.api.TransitPath;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
  * Our end of the routing service. This is basically a data model translation
@@ -33,8 +34,10 @@ import net.java.pathfinder.api.TransitPath;
 @Stateless
 public class ExternalRoutingService implements RoutingService {
 
-    @Resource(lookup = "java:app/configuration/GraphTraversalUrl")
+    @ConfigProperty(name="GraphTraversalUrl")
+    @Inject
     private String graphTraversalUrl;
+
     // TODO Can I use injection?
     private final Client jaxrsClient = ClientBuilder.newClient();
     private WebTarget graphTraversalResource;

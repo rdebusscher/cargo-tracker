@@ -2,6 +2,7 @@ package net.java.cargotracker.domain.model.cargo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
@@ -30,7 +31,7 @@ public class RouteSpecification extends AbstractSpecification<Itinerary>
     @ManyToOne
     @JoinColumn(name = "spec_destination_id")
     private Location destination;
-    @Temporal(TemporalType.DATE)
+
     @Column(name = "spec_arrival_deadline")
     @NotNull
     private LocalDate arrivalDeadline;

@@ -40,14 +40,7 @@
         <env-entry-value>${webapp.graphTraversalUrl}</env-entry-value>
     </env-entry>
 
-    <!-- Defining these at the application server level instead of here
-         can be more operations friendly and help make deployment even 
-         faster. -->
-    <data-source>
-        <name>java:app/jdbc/CargoTrackerDatabase</name>
-        <class-name>org.apache.derby.jdbc.EmbeddedDriver</class-name>
-        <url>jdbc:derby:${webapp.databaseTempDir}/cargo-tracker-database;create=true</url>
-    </data-source>
+
     <jms-destination>
         <name>java:app/jms/CargoHandledQueue</name>
         <interface-name>javax.jms.Queue</interface-name>

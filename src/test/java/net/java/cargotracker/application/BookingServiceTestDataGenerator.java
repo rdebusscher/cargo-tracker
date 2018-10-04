@@ -1,28 +1,25 @@
 package net.java.cargotracker.application;
 
-import java.util.List;
-import java.util.logging.Logger;
-
-import javax.annotation.PostConstruct;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import net.java.cargotracker.domain.model.cargo.Cargo;
 import net.java.cargotracker.domain.model.location.SampleLocations;
 import net.java.cargotracker.domain.model.voyage.SampleVoyages;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * Loads sample data for demo.
  */
-@Singleton
-@Startup
+//@Singleton
+//@Startup
+// In comments so that at deploymznt time the database isn't populated which is not Production style.
 public class BookingServiceTestDataGenerator {
-
-    // TODO See if the logger can be injected.
+    
     private static final Logger logger = Logger
             .getLogger(BookingServiceTestDataGenerator.class.getName());
     @PersistenceContext

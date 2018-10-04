@@ -10,6 +10,24 @@ The application is an end-to-end system for keeping track of shipping cargo. It 
 
 For further details on the project, please visit: https://m-reza-rahman.github.io/cargo-tracker/
 
+Ùpdate
+-------
+
+The code in this fork is updated to make it more a production style application
+
+* Use AppServer defined JDBC DataSource
+* Do not populate database (no create tables and insert of records)
+* Add distributable entry in web.xml 
+* The Rest URL endpoint is configured using MicroProfile Config (property name =)
+
+!!Important!!
+
+Application expects no a database with the JNDI name **jdbc/cargo-ds**
+
+The steps to create this on Payara are described in **payara-setup.md**
+
+Database scripts for MySQL and MSSQL can be found in the directory src/main/sql
+
 Getting Started
 ---------------
 The project site has detailed information on [how to get started](https://m-reza-rahman.github.io/cargo-tracker/#getstarted), especially with [NetBeans](https://java.net/projects/cargotracker/pages/NetBeans).

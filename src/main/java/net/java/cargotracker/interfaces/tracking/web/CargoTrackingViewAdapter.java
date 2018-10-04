@@ -2,6 +2,7 @@ package net.java.cargotracker.interfaces.tracking.web;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +25,7 @@ public class CargoTrackingViewAdapter {
 
     private static final SimpleDateFormat DATE_FORMAT
             = new SimpleDateFormat("MM/dd/yyyy hh:mm a z");
+    private static final DateTimeFormatter LOCAL_DATE_FORMAT = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
     private final Cargo cargo;
     private final List<HandlingEventViewAdapter> events;
@@ -90,7 +92,7 @@ public class CargoTrackingViewAdapter {
         if (eta == null) {
             return "?";
         } else {
-            return DATE_FORMAT.format(eta);
+            return LOCAL_DATE_FORMAT.format(eta);
         }
     }
 

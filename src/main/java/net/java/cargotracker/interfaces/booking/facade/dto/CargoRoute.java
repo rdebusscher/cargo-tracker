@@ -1,13 +1,14 @@
 package net.java.cargotracker.interfaces.booking.facade.dto;
 
+import net.java.cargotracker.application.util.DateUtil;
+import net.java.cargotracker.application.util.LocationUtil;
+
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import net.java.cargotracker.application.util.DateUtil;
-import net.java.cargotracker.application.util.LocationUtil;
 
 /**
  * DTO for registering and routing a cargo.
@@ -15,9 +16,8 @@ import net.java.cargotracker.application.util.LocationUtil;
 public class CargoRoute implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final SimpleDateFormat DATE_FORMAT
-            = new SimpleDateFormat("MM/dd/yyyy hh:mm a z");
-
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            
     private final String trackingId;
     private final String origin;
     private final String finalDestination;

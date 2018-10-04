@@ -3,6 +3,8 @@ package net.java.cargotracker.interfaces.booking.facade.dto;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import net.java.cargotracker.application.util.DateUtil;
 
 /**
@@ -10,8 +12,8 @@ import net.java.cargotracker.application.util.DateUtil;
  */
 public class Leg implements Serializable {
 
-    private static final SimpleDateFormat DATE_FORMAT
-            = new SimpleDateFormat("MM/dd/yyyy hh:mm a z");
+    private static final DateTimeFormatter DATE_FORMAT
+            = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
     private final String voyageNumber;
     private final String fromUnLocode;

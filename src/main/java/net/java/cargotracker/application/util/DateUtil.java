@@ -11,7 +11,7 @@ import java.util.Date;
  * A few utilities for working with dates.
  */
 // TODO Make this a CDI singleton?
-public class DateUtil {
+public final class DateUtil {
 
     private DateUtil() {
     }
@@ -33,6 +33,9 @@ public class DateUtil {
     }
 
     public static String getDateFromDateTime(String dateTime) {
+        if (!dateTime.contains(" ")) {
+            return dateTime;
+        }
         //03/15/2014 12:00 AM CET
         return dateTime.substring(0, dateTime.indexOf(" "));
     }
